@@ -1,5 +1,5 @@
 import { query } from "./_generated/server";
 
 export default query(async ({ db }) => {
-  return await db.table("messages").collect();
+  return await db.query("messages").collect();
 });
