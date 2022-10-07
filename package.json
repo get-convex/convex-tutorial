@@ -1,8 +1,9 @@
 {
-  "name": "convex-simple-starter",
+  "name": "convex-tutorial",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --open",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
