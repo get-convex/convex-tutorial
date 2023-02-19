@@ -10,14 +10,21 @@
     "dev:init": "convex dev --once"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "bootstrap": "^5.2.3",
     "convex": "0.9.1",
     "mapbox-gl": "^2.12.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.8.1",
+    "reactstrap": "^9.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.3.1",
     "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.2.7",
     "vite": "^2.3.8"
   }
 }
