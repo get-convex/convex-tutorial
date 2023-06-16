@@ -9,8 +9,7 @@
  * @module
  */
 
-import type { ApiFromModules } from "convex/server";
-import type * as messages from "../messages";
+import { anyApi } from "convex/server";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -20,6 +19,4 @@ import type * as messages from "../messages";
  * const myFunctionReference = api.myModule.myFunction;
  * ```
  */
-export declare const api: ApiFromModules<{
-  messages: typeof messages;
-}>;
+export const api = anyApi;
