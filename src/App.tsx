@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 
@@ -9,7 +9,7 @@ export default function App() {
   const sendMessage = useMutation(api.messages.send);
 
   const [name] = useState(() => "User " + Math.floor(Math.random() * 10000));
-  async function handleSendMessage(event) {
+  async function handleSendMessage(event: FormEvent) {
     event.preventDefault();
     await sendMessage({ body: newMessageText, author: name });
     setNewMessageText("");
