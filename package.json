@@ -9,7 +9,7 @@
     "dev:init": "convex dev --once"
   },
   "dependencies": {
-    "convex": "^1.6.3",
+    "convex": "file:../convex/npm-packages/convex/convex-1.6.3.tgz",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
