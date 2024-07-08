@@ -143,16 +143,4 @@ export type DatabaseReader = GenericDatabaseReader<DataModel>;
  */
 export type DatabaseWriter = GenericDatabaseWriter<DataModel>;
 
-export declare const app: {
-  logger: {
-    log: {
-      info: FunctionReference<
-        "mutation",
-        "internal",
-        { message: string },
-        null
-      >;
-    };
-  };
-  logger: {};
-};
+export declare const component: {};
