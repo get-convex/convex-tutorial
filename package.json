@@ -3,17 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "npm-run-all --parallel dev:backend dev:frontend",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc && vite build",
     "dev:backend": "convex dev",
-    "dev:frontend": "vite --open --clearScreen false",
-    "predev": "convex dev --until-success"
+    "dev:frontend": "vite --open",
+    "predev": "convex dev --once"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "convex": "1.17.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "prettier": "3.2.5",
-    "@types/detect-port": "~1.3.5"
+    "prettier": "3.2.5"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.0",
