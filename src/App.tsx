@@ -52,6 +52,7 @@ export default function App() {
             setNewMessageText(text);
           }}
           placeholder="Write a message…"
+          autoFocus
         />
         <button type="submit" disabled={!newMessageText}>
           Send
