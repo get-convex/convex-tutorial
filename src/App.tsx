@@ -7,12 +7,11 @@ import { api } from "../convex/_generated/api";
 const NAME = getOrSetFakeName();
 
 export default function App() {
-  // Replace the "TODO: Add mutation hook here." with:
-  const sendMessage = useMutation(api.chat.sendMessage);
-  const messages = useQuery(api.chat.getMessages);
-
-  const [newMessageText, setNewMessageText] = useState("");
   const [nameFilter, setNameFilter] = useState("");
+  const [newMessageText, setNewMessageText] = useState("");
+
+  const sendMessage = useMutation(api.chat.sendMessage);
+  const messages = useQuery(api.chat.getMessages, { nameFilter });
 
   useEffect(() => {
     // Make sure scrollTo works on button click in Chrome
