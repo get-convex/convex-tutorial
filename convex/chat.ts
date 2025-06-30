@@ -1,4 +1,9 @@
-import { internalAction, mutation, query } from "./_generated/server";
+import {
+  internalAction,
+  internalMutation,
+  mutation,
+  query,
+} from "./_generated/server";
 import { v } from "convex/values";
 import { api, internal } from "./_generated/api";
 
@@ -24,15 +29,15 @@ export const sendMessage = mutation({
 });
 
 export const getMessages = query({
-  args: { nameFilter: v.optional(v.string()) },
+  args: { nameFilter: v.string() },
   handler: async (ctx, args) => {
-    let query = ctx.db.query("messages");
-
-    // Only apply filter if nameFilter has a value
-    if (args.nameFilter)
-      query = query.filter((q) => q.eq(q.field("user"), args.nameFilter));
-
-    const messages = await query.order("desc").take(50);
+    const messages = args.nameFilter
+      ? await ctx.db
+          .query("messages")
+          .withIndex("by_user", (q) => q.eq("user", args.nameFilter))
+          .order("desc")
+          .take(50)
+      : await ctx.db.query("messages").order("desc").take(50);
 
     // Reverse the list so that it's in a chronological order.
     return messages.reverse();
