@@ -12,6 +12,7 @@ export default function App() {
   const messages = useQuery(api.chat.getMessages);
 
   const [newMessageText, setNewMessageText] = useState("");
+  const [nameFilter, setNameFilter] = useState("");
 
   useEffect(() => {
     // Make sure scrollTo works on button click in Chrome
@@ -27,6 +28,15 @@ export default function App() {
         <p>
           Connected as <strong>{NAME}</strong>
         </p>
+        <div className="name-filter">
+          <input
+            type="text"
+            value={nameFilter}
+            onChange={(e) => setNameFilter(e.target.value)}
+            placeholder="Filter messages by name..."
+            className="filter-input"
+          />
+        </div>
       </header>
       {messages?.map((message) => (
         <article
@@ -41,11 +51,10 @@ export default function App() {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          
+
           // Replace "alert("Mutation not implemented yet");" with:
           await sendMessage({ user: NAME, body: newMessageText });
-          
-         
+
           setNewMessageText("");
         }}
       >

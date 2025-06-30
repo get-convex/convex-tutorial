@@ -72,7 +72,7 @@ button {
   background: var(--primary);
   color: white;
   text-align: center;
-  height: 75px;
+  height: 106px;
 }
 
 .chat header::before,
@@ -80,7 +80,7 @@ button {
   display: block;
   content: "";
   position: absolute;
-  top: 75px;
+  top: 106px;
   box-shadow: 0 -40px 0 0 var(--primary);
   pointer-events: none;
   width: 40px;
@@ -157,6 +157,37 @@ button {
   padding: 0;
   width: 100px;
   border-radius: 0;
+}
+
+.chat header .name-filter {
+  margin-top: 8px;
+  width: 100%;
+  max-width: 280px;
+  padding: 0 16px;
+}
+
+.chat header .filter-input {
+  width: 100%;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 300;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.chat header .filter-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.chat header .filter-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 .chat article {
