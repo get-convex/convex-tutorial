@@ -1,0 +1,1 @@
+ ```markdown ## 🚀 Quick Start Guide 1. **Clone the repo** ```bash git clone krow cd krow ``` 2. **Install dependencies** ```bash npm i ``` 3. **Run the dev server** ```bash npm run dev ``` 4. **You're good to go!** _gg_ ``` 

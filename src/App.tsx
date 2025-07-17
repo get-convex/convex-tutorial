@@ -1,74 +1,46 @@
-import { useEffect, useState } from "react";
-import { faker } from "@faker-js/faker";
-
-// For demo purposes. In a real app, you'd have real user data.
-const NAME = getOrSetFakeName();
+import { useMutation, useQuery } from "convex/react";
+import { useEffect, useState, useRef } from "react";
+import { api } from "../convex/_generated/api";
 
 export default function App() {
-  const messages = [
-    { _id: "1", user: "Alice", body: "Good morning!" },
-    { _id: "2", user: NAME, body: "Beautiful sunrise today" },
-  ];
-  // TODO: Add mutation hook here.
+  const canvas = useQuery(api.canvas.getCanvas);
+  const setCanvas = useMutation(api.canvas.setCanvas);
+  const [text, setText] = useState("");
 
-  const [newMessageText, setNewMessageText] = useState("");
+  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Make sure scrollTo works on button click in Chrome
-    setTimeout(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }, 0);
-  }, [messages]);
+    if (canvas && canvas.body !== text) {
+      setText(canvas.body);
+    }
+  }, [canvas]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = e.target.value;
+    setText(newText);
+
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current);
+    }
+
+    debounceTimeout.current = setTimeout(() => {
+      setCanvas({ body: newText });
+    }, 1000);
+  };
 
   return (
-    <main className="chat">
-      <header>
-        <h1>Convex Chat</h1>
-        <p>
-          Connected as <strong>{NAME}</strong>
-        </p>
-      </header>
-      {messages?.map((message) => (
-        <article
-          key={message._id}
-          className={message.user === NAME ? "message-mine" : ""}
-        >
-          <div>{message.user}</div>
-
-          <p>{message.body}</p>
-        </article>
-      ))}
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          alert("Mutation not implemented yet");
-          setNewMessageText("");
-        }}
-      >
-        <input
-          value={newMessageText}
-          onChange={async (e) => {
-            const text = e.target.value;
-            setNewMessageText(text);
-          }}
-          placeholder="Write a message…"
-          autoFocus
-        />
-        <button type="submit" disabled={!newMessageText}>
-          Send
-        </button>
-      </form>
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+      <div className="w-full max-w-3xl bg-white rounded-3xl shadow-2xl p-8">
+      <h1 className="text-4xl font-extrabold mb-6 text-indigo-700 flex items-center gap-2">
+        📝 Notepad
+      </h1>
+      <textarea
+        className="w-full h-[70vh] resize-none border-2 border-indigo-200 focus:border-indigo-500 rounded-2xl p-6 text-xl font-mono bg-indigo-50 focus:bg-white outline-none transition-all duration-200 shadow-inner"
+        value={text}
+        onChange={handleChange}
+        placeholder="Start typing your notes here…"
+      />
+      </div>
     </main>
   );
-}
-
-function getOrSetFakeName() {
-  const NAME_KEY = "tutorial_name";
-  const name = sessionStorage.getItem(NAME_KEY);
-  if (!name) {
-    const newName = faker.person.firstName();
-    sessionStorage.setItem(NAME_KEY, newName);
-    return newName;
-  }
-  return name;
 }
