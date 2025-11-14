@@ -52,5 +52,4 @@ export interface Card {
     createdBy: string;
     winner?: number;
     actionHistory: any[];
-    gameOver?: boolean; // Keep for frontend compatibility
   }
