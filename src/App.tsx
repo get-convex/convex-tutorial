@@ -5,14 +5,14 @@ import { GameState, Player, Card } from './types';
 
 // Fixed cardTypes with consistent properties
 const cardTypes: Omit<Card, 'cardId' | 'selected'>[] = [
-  { type: '🐱', name: 'Cat', effect: 'See Future', color: '#4ecdc4', isAction: true },
-  { type: '🐶', name: 'Dog', effect: 'Nope', color: '#ff6b6b', isAction: true },
-  { type: '🌮', name: 'Taco', effect: 'Shuffle', color: '#f39c12', isAction: true },
-  { type: '🍺', name: 'Beer', effect: 'Skip', color: '#9b59b6', isAction: true },
-  { type: '⚡', name: 'Laser', effect: 'Attack', color: '#e67e22', isAction: true },
-  { type: '⏰', name: 'Time', effect: 'Target', color: '#3498db', isAction: true },
+  { type: '🔮', name: 'Cat', effect: 'See Future', color: '#4ecdc4', isAction: true },
+  { type: '✋', name: 'Nope', effect: 'Nope', color: '#ff6b6b', isAction: true },
+  { type: '🔀', name: 'Shuffle', effect: 'Shuffle', color: '#f39c12', isAction: true },
+  { type: '🛑', name: 'Skip', effect: 'Skip', color: '#9b59b6', isAction: true },
+  { type: '⚡', name: 'Attack', effect: 'Attack', color: '#e67e22', isAction: true },
+  { type: '⏰', name: 'Favor', effect: 'Favor', color: '#3498db', isAction: true },
   { type: '💤', name: 'Sleep', effect: 'Skip', color: '#95a5a6', isAction: true },
-  { type: '👉', name: 'Point', effect: 'Target', color: '#e74c3c', isAction: true },
+  { type: '🐱', name: 'Cat', effect: 'Cat', color: '#e74c3c', isAction: true },
   { type: '💣', name: 'Bomb', effect: 'Exploding Kitten', color: '#e74c3c', isExploding: true, isAction: false },
   { type: '🔧', name: 'Defuse', effect: 'Defuse', color: '#2ecc71', isDefuse: true, isAction: false }
 ];
