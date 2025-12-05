@@ -1,0 +1,25 @@
+{
+  "beliefs": {
+    "bomb_probability": 0.6666666666666666,
+    "defuse_probability": 0.1,
+    "action_card_probs": {
+      "Skip": 0.15,
+      "Attack": 0.15,
+      "Shuffle": 0.1,
+      "Nope": 0.1,
+      "SeeFuture": 0.1,
+      "Cat": 0.15
+    }
+  },
+  "deck_composition_prior": {
+    "Bomb": 0.1,
+    "Defuse": 0.15,
+    "Skip": 0.15,
+    "Attack": 0.15,
+    "Shuffle": 0.1,
+    "Nope": 0.1,
+    "SeeFuture": 0.1,
+    "Cat": 0.15
+  },
+  "exploration": 0.024622419539340263
+}
