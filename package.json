@@ -6,11 +6,11 @@
     "build": "tsc && vite build",
     "dev:backend": "convex dev",
     "dev:frontend": "vite --open",
-    "predev": "convex dev --once"
+    "predev": "convex init"
   },
   "dependencies": {
     "@faker-js/faker": "^10.0.0",
-    "convex": "1.31.7",
+    "convex": "1.33.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "prettier": "^3.8.0"
